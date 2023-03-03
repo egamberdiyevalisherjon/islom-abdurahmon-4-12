@@ -1,18 +1,20 @@
 import React from "react";
-import { useQuery } from "react-query";
+import { useQuery, useInfiniteQuery } from "react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Products = () => {
-  const { isLoading, error, data, isFetching } = useQuery(
+  const { data: users } = useQuery(["users"], () => axios.get("/users"));
+  const { isLoading, error, data, isFetching, refetch } = useQuery(
     ["products"],
-    () => axios.get("/products"),
+    () => axios.get(`/products`),
     {
       cacheTime: 5000, // 30000
       staleTime: 5000, // 0
       retry: 2, // 4
       retryDelay: 10000,
       retryOnMount: false,
+      enabled: !!users, // true
     }
   );
 
@@ -23,6 +25,7 @@ const Products = () => {
   return (
     <div>
       <h2>Products</h2>
+      <button onClick={refetch}>Refetch</button>
       <ul>
         {data?.data?.map((product) => (
           <li key={product.id}>

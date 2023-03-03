@@ -10,7 +10,7 @@ const Product = () => {
 
   const { data, isLoading, error } = useQuery(
     ["products", id],
-    () => axios.get(`product/${id}`),
+    () => axios.get(`products/${id}`),
     {
       initialData: () => {
         let cacheData = client.getQueryData(["products"]);
