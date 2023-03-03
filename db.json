@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Eshmat",
+      "age": 32
+    },
+    {
+      "id": 2,
+      "name": "Toshmat",
+      "age": 45
+    },
+    {
+      "id": 3,
+      "name": "John",
+      "age": 72
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Iphone",
+      "price": 999
+    },
+    {
+      "id": 2,
+      "name": "Mac book Air",
+      "price": 1099
+    },
+    {
+      "id": 3,
+      "name": "Mac pro",
+      "price": 2099
+    }
+  ]
+}
