@@ -1,8 +1,14 @@
 import React from "react";
 import useFetch from "../hooks/useFetch";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 const Users = () => {
-  const { isLoading, error, data } = useFetch("/users");
+  const { isLoading, error, data } = useQuery(["users"], () =>
+    axios.get("/users")
+  );
+
+  // const { isLoading, error, data } = useFetch("/users");
 
   if (isLoading) return <h1>Loading...</h1>;
 
@@ -12,7 +18,7 @@ const Users = () => {
     <div>
       <h2>Users</h2>
       <ul>
-        {data?.map((user) => (
+        {data?.data?.map((user) => (
           <li key={user.id}>{user.name}</li>
         ))}
       </ul>

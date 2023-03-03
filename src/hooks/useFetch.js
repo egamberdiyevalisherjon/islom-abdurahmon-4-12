@@ -12,11 +12,11 @@ function useFetch(url) {
     (async function () {
       try {
         setIsLoading(true);
-        let { data } = await axios.get(url);
+        let res = await axios.get(url);
         if (unmounted) return;
 
         setIsLoading(false);
-        setData(data);
+        setData(res);
         setError(null);
       } catch (error) {
         if (unmounted) return;
